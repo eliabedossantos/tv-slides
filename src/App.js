@@ -1,13 +1,10 @@
 import React from "react";
-import { useState } from "react";
-import $ from "jquery";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Banner from "./components/pages/Banner";
+import Banner from "./components/Banner";
 
 function App() {
   return (
-      <Banner />
-
+    <Banner />
   );
 }
 
