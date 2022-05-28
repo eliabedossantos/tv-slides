@@ -26,7 +26,7 @@ function loadBanner(){
         
         
         
-        $('.slide img').attr("src", '../../img/'+currentImage);
+        $('.slide img').attr("src", '../../../public/img/'+currentImage);
         
         $('.slide img').fadeIn(500);
         });
