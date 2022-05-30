@@ -11,8 +11,12 @@ import Sound from "./components/pages/Sound";
 
 //Layout
 import ButtonFullScreen from './components/layout/ButtonFullScreen';
+
+// Api
+// import api from './Api';
   
 function App() {
+
   const [hours, setHours] = useState('');
   const [minutes, setMinutes] = useState('');
   var welcomeControl = false;
