@@ -15,6 +15,7 @@ import ButtonFullScreen from './components/layout/ButtonFullScreen';
 function App() {
   const [hours, setHours] = useState('');
   const [minutes, setMinutes] = useState('');
+  var welcomeControl = false;
 
   function currentHour() {
     const currentHour = new Date().getHours();
@@ -28,35 +29,36 @@ function App() {
     currentHour();
   }, 1000);
 
-    
-  if(hours == 10 && minutes > 0 && minutes <= 20){
-    return (
-      <>
-        <Welcome />
-        <ButtonFullScreen />
-      </>
-    );
-  } 
-  else if(hours == 10 && minutes > 20 && minutes <= 40){
-    return (
-      <>
-        <Video />
-        <ButtonFullScreen />
-      </>
-    );
-  }
-  else if(hours == 10 && minutes > 40 && minutes <= 60){
-    return (
-      <>
-        <Banner />
-        <ButtonFullScreen />
-      </>
-    );
+  if(welcomeControl === false){
+    if(minutes > 0 && minutes <= 25){
+      return (
+        <>
+          <Video />
+          <ButtonFullScreen />
+        </>
+      );
+    }
+    else if(minutes > 25 && minutes <= 45){
+      return (
+        <>
+          <Banner />
+          <ButtonFullScreen />
+        </>
+      );
+    }
+    else if(minutes > 45 && minutes <= 59){
+      return (
+        <>
+          <Sound />
+          <ButtonFullScreen />
+        </>
+      );
+    }
   }
   else{
     return (
       <>
-        <Sound />
+        <Welcome />
         <ButtonFullScreen />
       </>
     );
