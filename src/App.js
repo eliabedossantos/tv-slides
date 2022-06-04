@@ -1,60 +1,44 @@
 // General
 import React from "react";
-import { useState } from "react";
+import { useControl } from "./Context/ControlContext";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Pages
-import Banner from "./components/pages/Banner";
-import Welcome from "./components/pages/Welcome";
-import Video from "./components/pages/Video";
-import Sound from "./components/pages/Sound";
-
-//Layout
-import ButtonFullScreen from './components/layout/ButtonFullScreen';
+import Banner from "./components/Banner/Banner";
+import Welcome from "./components/Welcome/Welcome";
+import Video from "./components/Video/Video";
+import Sound from "./components/Sound/Sound";
 
 // Api
 // import api from './Api';
   
 function App() {
 
-  const [hours, setHours] = useState('');
-  const [minutes, setMinutes] = useState('');
-  var welcomeControl = false;
-
-  function currentHour() {
-    const currentHour = new Date().getHours();
-    const currentMinute = new Date().getMinutes();
-    const currentTime = `${currentHour}:${currentMinute.toFixed(0).padStart(2, '0')}`;
-    setHours(currentHour)
-    setMinutes(currentMinute)
-  }
+  const {time, welcomeControl} = useControl();
   
-  setInterval(() => {
-    currentHour();
-  }, 1000);
+  React.useEffect(()=>{
+    console.log(time.minutes);
+  })
 
   if(welcomeControl === false){
-    if(minutes > 0 && minutes <= 25){
+    if(time.minutes > 0 && time.minutes <= 25){
       return (
         <>
           <Video />
-          <ButtonFullScreen />
         </>
       );
     }
-    else if(minutes > 25 && minutes <= 45){
+    else if(time.minutes > 25 && time.minutes <= 34){
       return (
         <>
           <Banner />
-          <ButtonFullScreen />
         </>
       );
     }
-    else if(minutes > 45 && minutes <= 59){
+    else if(time.minutes > 34 && time.minutes <= 59){
       return (
         <>
           <Sound />
-          <ButtonFullScreen />
         </>
       );
     }
@@ -63,7 +47,6 @@ function App() {
     return (
       <>
         <Welcome />
-        <ButtonFullScreen />
       </>
     );
   }
